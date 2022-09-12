@@ -12,13 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendMessage = void 0;
 const net_1 = require("net");
 // const port = 8000;
-const client = new net_1.Socket;
 const sendMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const client = new net_1.Socket;
     const { ip, port, message, system, pager } = req.body;
     const data = `<PageRequest><Pager Type="Text" SystemID="${system}" ID="${pager}"/><Message>${message}\\fFVB</Message></PageRequest>\r\n`;
-    client.connect(port, ip, () => {
-        client.write(data);
-    });
+    client.connect(port, ip, () => __awaiter(void 0, void 0, void 0, function* () {
+        yield client.write(data);
+    }));
     res.json({ ok: data });
 });
 exports.sendMessage = sendMessage;
