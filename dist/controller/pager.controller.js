@@ -16,9 +16,9 @@ const sendMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const client = new net_1.Socket;
     const { ip, port, message, system, pager } = req.body;
     const data = `<PageRequest><Pager Type="Text" SystemID="${system}" ID="${pager}"/><Message>${message}\\fFVB</Message></PageRequest>\r\n`;
-    client.connect(port, ip, () => __awaiter(void 0, void 0, void 0, function* () {
-        yield client.write(data);
-    }));
+    client.connect({ host: ip, port: Number(port) }, () => {
+        client.write(data);
+    });
     res.json({ ok: data });
 });
 exports.sendMessage = sendMessage;
