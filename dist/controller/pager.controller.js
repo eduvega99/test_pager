@@ -19,7 +19,7 @@ const sendMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     client.connect({ host: ip, port: Number(port) }, () => {
         client.write(data);
     });
-    res.json({ ok: data });
+    res.json({ message: data });
 });
 exports.sendMessage = sendMessage;
 //# sourceMappingURL=pager.controller.js.map

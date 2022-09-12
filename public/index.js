@@ -21,5 +21,10 @@ button.addEventListener('click', async () => {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
-    }).then(res => alert(res.json()));
+    })
+    .then(res => res.json())
+    .then(data => {
+        const { message } = data;
+        console.log(message);
+    });
 });

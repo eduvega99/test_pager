@@ -15,5 +15,5 @@ export const sendMessage = async (req: Request, res: Response) => {
         client.write(data);
     });
     
-    res.json({ok: data});
+    res.json({ message: data });
 }
