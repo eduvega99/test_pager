@@ -13,12 +13,12 @@ exports.sendMessage = void 0;
 const net_1 = require("net");
 // const port = 8000;
 const sendMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const client = new net_1.Socket;
+    const client = new net_1.Socket();
     const { ip, port, message, system, pager } = req.body;
     const data = `<PageRequest><Pager Type="Text" SystemID="${system}" ID="${pager}"/><Message>${message}\\fFVB</Message></PageRequest>\r\n`;
-    client.connect({ host: ip, port: Number(port) }, () => {
-        client.write(data);
-    });
+    yield client.connect({ host: ip, port: Number(port) }, () => __awaiter(void 0, void 0, void 0, function* () {
+        yield client.write(data);
+    }));
     res.json({ message: data });
 });
 exports.sendMessage = sendMessage;

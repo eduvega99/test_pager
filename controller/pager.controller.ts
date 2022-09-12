@@ -5,7 +5,7 @@ import { Socket } from "net";
 
 export const sendMessage = async (req: Request, res: Response) => {
     
-    const client = new Socket;
+    const client = new Socket();
 
     const { ip, port, message, system, pager } = req.body;
 
