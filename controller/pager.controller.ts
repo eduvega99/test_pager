@@ -9,8 +9,8 @@ export const sendMessage = async (req: Request, res: Response) => {
 
     const data = `<PageRequest><Pager Type="Text" SystemID="${system}" ID="${pager}"/><Message>${message}\\fFVB</Message></PageRequest>\r\n`;
 
-    client.connect(port, ip, () => {
-        client.write(data);
+    client.connect(port, ip, async () => {
+        await client.write(data);
     });
     
     res.json({ok: data});
