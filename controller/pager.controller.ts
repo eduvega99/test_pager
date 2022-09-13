@@ -17,7 +17,7 @@ export const sendMessage = async (req: Request, res: Response) => {
     const data2 = `<PageRequest pager="2;1" system_id="0" message="Flash5Min" />`
     
     client.connect({ host: ip, port: Number(port) }, async () => {
-        client.write(data1);
+        // client.write(data1);
         await new Promise(resolve => {
             setTimeout(resolve, 2500)
         }); 
