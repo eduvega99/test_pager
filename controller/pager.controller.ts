@@ -14,7 +14,7 @@ export const sendMessage = async (req: Request, res: Response) => {
 
 
     const data1 = `<Login services="NetPage" />`;
-    const data2 = `<PageRequest pager="2;1" message="Flash5Min" />`
+    const data2 = `<PageRequest pager="2;1" system_id="0" message="Flash5Min" />`
     
     client.connect({ host: ip, port: Number(port) }, async () => {
         client.write(data1);
@@ -26,6 +26,8 @@ export const sendMessage = async (req: Request, res: Response) => {
             setTimeout(resolve, 2500)
         }); 
     });
+
+    client.on('data', console.log);
  
     res.json({ message: data2 });
 }
