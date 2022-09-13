@@ -27,7 +27,9 @@ export const sendMessage = async (req: Request, res: Response) => {
         }); 
     });
 
-    client.on('data', console.log);
+    client.on('data', (data) => {
+        console.log(`Data received: ${data}`);
+    });
  
     res.json({ message: data2 });
 }
